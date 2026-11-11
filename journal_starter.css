@@ -1,0 +1,238 @@
+/* ============================================
+   HENRY'S JOURNAL - CSS POSITIONING EXERCISE
+   COMPLETED
+   ============================================
+
+   Author: Ibrahim Mackey
+   Date: 11/09/2026
+
+   Special Features: #1 Custom Color Theme & Typography,
+                     #2 Hover Effects & Transitions,
+                     #3 Extra Responsive Breakpoint
+============================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+/* ============================================
+   SPECIAL FEATURE #1: COLOR PALETTE
+   Documented palette (used consistently in header, sidebar, entries):
+     Primary blue  #4a90e2  (header background, hover)
+     Deep navy     #1f4e8c  (headings, footer text)
+     Soft sky      #e8f1fc  (sidebar background)
+     Warm accent   #f5a623  (header underline)
+     Text gray     #333333  (body text)
+     Border gray   #dddddd  (entry and footer borders)
+   Font: Poppins (Google Fonts)
+   ============================================ */
+
+
+/* ============================================
+   STEP 1: BASE RESET & TYPOGRAPHY
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+/* ============================================
+   STEP 2: MAIN CONTAINER
+   ============================================ */
+
+#main-container {
+    background-color: #ffffff;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* ============================================
+   STEP 3: HEADER STYLING
+   ============================================ */
+
+#header-box {
+    background-color: #4a90e2;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #f5a623;
+    border-radius: 6px;
+}
+
+#header-box h1 {
+    font-size: 2em;
+    transition: letter-spacing 0.3s ease;
+}
+
+#header-box h1:hover {
+    letter-spacing: 2px;
+}
+
+/* ============================================
+   STEP 4: CREATE TWO-COLUMN LAYOUT
+   ============================================ */
+
+#sidebar {
+    float: left;
+    width: 25%;
+    padding: 20px;
+    background-color: #e8f1fc;
+}
+
+#sidebar h2 {
+    color: #1f4e8c;
+    margin-bottom: 10px;
+}
+
+.friends-list {
+    list-style: none;
+}
+
+.friends-list li {
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.friends-list li:hover {
+    background-color: #4a90e2;
+    color: #ffffff;
+}
+
+#content-area {
+    float: left;
+    width: 75%;
+    padding: 20px;
+}
+
+/* ============================================
+   STEP 5: CLEARFIX FOR PARENT COLLAPSE
+   ============================================ */
+
+#main-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer must sit below both floated columns */
+#footer {
+    clear: both;
+    text-align: center;
+    padding: 15px;
+    color: #1f4e8c;
+    border-top: 1px solid #dddddd;
+}
+
+/* ============================================
+   STEP 6: STYLE JOURNAL ENTRIES
+   ============================================ */
+
+.journal-entry {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.journal-entry:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Contain the floated image inside its entry */
+.entry-content::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.entry-title {
+    color: #1f4e8c;
+    margin-bottom: 10px;
+}
+
+.entry-image {
+    float: left;
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+    margin-right: 15px;
+    border: 12px solid #ffffff;
+    box-shadow: 0 0 0 2px #333333;
+    padding: 8px;
+    background: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.entry-image:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   SPECIAL FEATURE #3: TABLET BREAKPOINT (769px - 1024px)
+   ============================================ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    #main-container {
+        margin: 10px auto;
+    }
+
+    #sidebar {
+        width: 30%;
+        padding: 15px;
+    }
+
+    #content-area {
+        width: 70%;
+        padding: 15px;
+    }
+
+    .entry-image {
+        width: 160px;
+    }
+}
+
+/* ============================================
+   STEP 7: RESPONSIVE DESIGN (MOBILE)
+   ============================================ */
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+
+    #main-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    #sidebar,
+    #content-area {
+        float: none;
+        width: 100%;
+    }
+
+    #sidebar {
+        margin-bottom: 20px;
+    }
+
+    .entry-image {
+        float: none;
+        display: block;
+        margin: 0 auto 15px;
+    }
+}
